@@ -6,7 +6,7 @@ const todoData = [
     },
     {
         id:2,
-        text:"Grocery shopping ",
+        text:"Grocery shopping day2 ",
         completed:false
     },
     {

@@ -1,41 +1,39 @@
-import React from 'react';
+import React,{Component} from 'react';
 import CheckboxItem from './CheckboxItem'
 import './App.css'
 import todoData from './todoData'
 
-const App = ()=>{
+class App extends Component{
 
-  const firstName = "Derick"
-  const lastName = "The Iceman"
-  const date = new Date();
-  const hours = date.getHours();
-  let timeOfTheDay;
+  constructor(){
+    super();
+    this.state = todoData;
+    
+  }
 
-  if(hours<12)
-    timeOfTheDay = "Good Morning"
-  else if(12<hours && hours>17)
-    timeOfTheDay = "Good Evening"
-  else
-    timeOfTheDay = "Good Night"
+  render(){
 
-  const  todoList = todoData.map((todo)=>{
-    return <CheckboxItem key={todo.id} detail={{id:"check-"+todo.id, value:todo.text, checked:todo.completed}} />
-  })
+    const  todoList = this.state.map((todo)=>{
+      return <CheckboxItem key={todo.id} detail={{id:"check-"+todo.id, value:todo.text, checked:todo.completed}} />
+    })
 
-  return(
-    <div className="wrap">
-
-      <div className="header"><span>{`Todo List, ${timeOfTheDay}`}</span> </div>
-      <div className="wrap-list">
-      <ol className="list">
-
-          {todoList}
-      
-      </ol>
+    return(
+      <div className="wrap">
+  
+        <div className="header"><span>{`Todo List`}</span> </div>
+        <div className="wrap-list">
+        <ol className="list">
+  
+            {todoList}
+        
+        </ol>
+        </div>
       </div>
-    </div>
+  
+    )
+  }
 
-  )
+  
 }
 
 export default App;
