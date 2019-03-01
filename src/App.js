@@ -1,6 +1,7 @@
 import React from 'react';
 import CheckboxItem from './CheckboxItem'
 import './App.css'
+import todoData from './todoData'
 
 const App = ()=>{
 
@@ -17,17 +18,19 @@ const App = ()=>{
   else
     timeOfTheDay = "Good Night"
 
+  const  todoList = todoData.map((todo)=>{
+    return <CheckboxItem key={todo.id} detail={{id:"check-"+todo.id, value:todo.text, checked:todo.completed}} />
+  })
+
   return(
     <div className="wrap">
 
       <div className="header"><span>{`Todo List, ${timeOfTheDay}`}</span> </div>
       <div className="wrap-list">
       <ol className="list">
-        <CheckboxItem detail={{id:"check-1", value:"shop" }} />
-        <CheckboxItem detail={{id:"check-2", value:"practice"}} />
-        <CheckboxItem detail={{id:"check-3", value:"life"}} />
-        <CheckboxItem detail={{id:"check-4", value:"Do something"}}/>
-        <CheckboxItem detail={{id:"check-5", value:"shower"}}/>
+
+          {todoList}
+      
       </ol>
       </div>
     </div>
